@@ -194,6 +194,7 @@
 
     <!-- Reservation Cards -->
     <div class="reservations-list">
+
         <!-- Active Reservation -->
         <div class="reservation-card">
             <span class="reservation-status status-confirmed">Confirmed</span>
@@ -206,7 +207,7 @@
                     </div>
                     <div class="detail-item">
                         <strong>Date & Time</strong>
-                        Fri, Aug 25 2025 • 7:30 PM
+                        Fri, Aug 25 2025 | 7:30 PM
                     </div>
                     <div class="detail-item">
                         <strong>Party Size</strong>
@@ -231,7 +232,7 @@
             </div>
         </div>
 
-        <!-- Completed Reservation -->
+        <!-- Completed Reservation 01-->
         <div class="reservation-card">
             <span class="reservation-status status-completed">Completed</span>
             <div class="reservation-header">
@@ -243,7 +244,41 @@
                     </div>
                     <div class="detail-item">
                         <strong>Date & Time</strong>
-                        Thu, Feb 13 2025 • 10:00 AM
+                        Thu, Feb 13 2025 | 10:00 AM
+                    </div>
+                    <div class="detail-item">
+                        <strong>Party Size</strong>
+                        10 People
+                    </div>
+                    <div class="detail-item">
+                        <strong>Reservation ID</strong>
+                        #RES-105664
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-secondary btn-icon">
+                    <i class="fas fa-receipt"></i> View Receipt
+                </button>
+                <button class="btn-primary btn-icon">
+                    <i class="fas fa-star"></i> Leave Review
+                </button>
+            </div>
+        </div>
+
+        <!-- Completed Reservation 02-->
+        <div class="reservation-card">
+            <span class="reservation-status status-completed">Completed</span>
+            <div class="reservation-header">
+                <img src="resources/images/rest5.jpg" alt="Restaurant" class="restaurant-image">
+                <div class="reservation-details">
+                    <div class="detail-item">
+                        <strong>Restaurant</strong>
+                        Celonese
+                    </div>
+                    <div class="detail-item">
+                        <strong>Date & Time</strong>
+                        Thu, Jan 09 2025 | 07:00 AM
                     </div>
                     <div class="detail-item">
                         <strong>Party Size</strong>

@@ -261,19 +261,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="resturants_page.jsp" class="nav-link">
                     <i class="fas fa-utensils"></i>
                     Restaurants
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="login_page.jsp" class="nav-link">
                     <i class="fas fa-users"></i>
                     Users
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="my_reservation_page.jsp" class="nav-link">
                     <i class="fas fa-calendar-check"></i>
                     Reservations
                 </a>

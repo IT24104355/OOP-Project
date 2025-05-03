@@ -301,14 +301,34 @@
     <!-- Restaurant Grid -->
     <section class="restaurant-grid">
         <div class="restaurant-card">
-            <div class="card-badge">20% Off</div>
-            <div class="card-image" style="background-image: url(resources/images/rest2.jpg)"></div>
+        <div class="card-badge">25% Off</div>
+        <div class="card-image" style="background-image: url(resources/images/rest5.jpg)"></div>
+           <div class="card-content">
+            <h3>Kai Resto</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i> 4.5 (220 reviews)
+            </div>
+            <p>French Cuisine  $$$ | 2km away</p>
+            <div class="card-footer">
+                <button class="btn-primary" onclick="showReservationModal()">
+                    <i class="fas fa-calendar-alt"></i> Reserve
+                </button>
+                <div class="availability">
+                    <span class="dot green"></span> 5 tables available
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="restaurant-card">
+            <div class="card-badge">25% Off</div>
+            <div class="card-image" style="background-image: url(resources/images/rest6.jpg)"></div>
             <div class="card-content">
                 <h3>La Maison Gourmet</h3>
                 <div class="rating">
-                    <i class="fas fa-star"></i> 4.5 (190 reviews)
+                    <i class="fas fa-star"></i> 4.8 (280 reviews)
                 </div>
-                <p>French Cuisine • $$$ • 2km away</p>
+                <p>Korean Cuisine $$$ | 1.5 km away</p>
                 <div class="card-footer">
                     <button class="btn-primary" onclick="showReservationModal()">
                         <i class="fas fa-calendar-alt"></i> Reserve
@@ -319,29 +339,92 @@
                 </div>
             </div>
         </div>
-        <!-- Repeat restaurant cards -->
-
 
         <div class="restaurant-card">
-            <div class="card-badge">10% Off</div>
-            <div class="card-image" style="background-image: url(resources/images/rest3.jpg)"></div>
+            <div class="card-badge">25% Off</div>
+            <div class="card-image" style="background-image: url(resources/images/rest7.jpg)"></div>
             <div class="card-content">
-                <h3>Sakura Sushi</h3>
+                <h3>Saffron Spice</h3>
                 <div class="rating">
-                    <i class="fas fa-star"></i> 4.8 (230 reviews)
+                    <i class="fas fa-star"></i> 4.5 (220 reviews)
                 </div>
-                <p>Japanese Cuisine • $$ • 3.5km away</p>
+                <p>Korean Cuisine $$$ | 2 km away</p>
                 <div class="card-footer">
                     <button class="btn-primary" onclick="showReservationModal()">
                         <i class="fas fa-calendar-alt"></i> Reserve
                     </button>
                     <div class="availability">
-                        <span class="dot green"></span> 3 tables available
+                        <span class="dot green"></span> 4 tables available
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="restaurant-card">
+            <div class="card-badge">20% Off</div>
+            <div class="card-image" style="background-image: url(resources/images/rest2.jpg)"></div>
+            <div class="card-content">
+                <h3>Savory Haven</h3>
+                <div class="rating">
+                    <i class="fas fa-star"></i> 4.2 (200 reviews)
+                </div>
+                <p>Korean Cuisine $$$ | 2 km away</p>
+                <div class="card-footer">
+                    <button class="btn-primary" onclick="showReservationModal()">
+                        <i class="fas fa-calendar-alt"></i> Reserve
+                    </button>
+                    <div class="availability">
+                        <span class="dot green"></span> 7 tables available
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+            <!-- Repeat restaurant cards -->
+            <div class="restaurant-card">
+                <div class="card-badge">15% Off</div>
+                <div class="card-image" style="background-image: url(resources/images/rest3.jpg)"></div>
+                <div class="card-content">
+                    <h3>Saffron Spice</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i> 3.8 (200 reviews)
+                    </div>
+                    <p>Indian Cuisine  $$ | 3 km away</p>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="showReservationModal()">
+                            <i class="fas fa-calendar-alt"></i> Reserve
+                        </button>
+                        <div class="availability">
+                            <span class="dot green"></span> 4 tables available
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="restaurant-card">
+                <div class="card-badge">10% Off</div>
+                <div class="card-image" style="background-image: url(resources/images/rest4.jpg)"></div>
+                <div class="card-content">
+                    <h3>Sakura Sushi</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i> 3.5 (180 reviews)
+                    </div>
+                    <p>Japanese Cuisine  $$ | 3.5km away</p>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="showReservationModal()">
+                            <i class="fas fa-calendar-alt"></i> Reserve
+                        </button>
+                        <div class="availability">
+                            <span class="dot green"></span> 3 tables available
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </main>
 
 

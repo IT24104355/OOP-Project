@@ -353,7 +353,7 @@
                 <i class="fas fa-star-half-alt"></i>
                 4.5 (190 reviews)
             </div>
-            <p>French Cuisine • $$$</p>
+            <p>French Cuisine | $$$</p>
             <button class="btn-primary">Book Now</button>
         </div>
     </div>
@@ -394,7 +394,7 @@
                 <i class="fas fa-star-half-alt"></i>
                 3.5 (140 reviews)
             </div>
-            <p>French Cuisine • $$$</p>
+            <p>French Cuisine | $$$</p>
             <button class="btn-primary">Book Now</button>
         </div>
     </div>

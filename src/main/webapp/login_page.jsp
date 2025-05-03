@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReservEats - Secure Login</title>
+    <title>ReservEats - User Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,12 +14,60 @@
             --success: #28a745;
             --warning: #ffc107;
             --danger: #dc3545;
+            --light: #ecf0f1;
+            --dark: #34495e;
         }
 
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Auth Container Styles */
         .auth-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 100vh;
+            min-height: calc(100vh - 110px);
             background: var(--accent);
         }
 
@@ -179,6 +227,12 @@
             color: white;
         }
 
+        .btn-secondary {
+            background: var(--primary);
+            color: white;
+            margin-top: 10px;
+        }
+
         .social-auth {
             margin: 2rem 0;
             position: relative;
@@ -226,6 +280,150 @@
             background: var(--accent);
         }
 
+        /* Dashboard Styles */
+        .dashboard-container {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: var(--light);
+        }
+
+        .main-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .user-details h2 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .user-details p {
+            color: #777;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-card {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-label {
+            font-weight: 600;
+        }
+
+        .edit-btn {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            width: auto;
+        }
+
+        /* Edit Profile Forms */
+        .form-container {
+            display: none;
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .auth-container {
                 grid-template-columns: 1fr;
@@ -234,11 +432,45 @@
             .auth-illustration {
                 display: none;
             }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links, .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-<div class="auth-container">
+<header>
+    <div class="nav-container">
+        <div class="logo">ReservEats</div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Restaurants</a>
+            <a href="#">Reservations</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn-auth btn-secondary" onclick="showLoginForm()">Login</button>
+            <button class="btn-auth btn-primary" onclick="showRegisterForm()">Register</button>
+        </div>
+    </div>
+</header>
+
+<div class="auth-container" id="auth-container">
     <div class="auth-illustration">
         <div class="hero-text">
             <h2>Welcome Back to ReservEats</h2>
@@ -263,13 +495,13 @@
 
                     <div class="input-group">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" class="form-control" placeholder="Email" required>
+                        <input type="email" class="form-control" placeholder="Email" required id="login-email">
                     </div>
 
                     <div class="input-group">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" class="form-control" placeholder="Password" required id="loginPassword">
-                        <i class="fas fa-eye password-toggle" onclick="togglePassword('loginPassword')"></i>
+                        <input type="password" class="form-control" placeholder="Password" required id="login-password">
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('login-password')"></i>
                     </div>
 
                     <div class="flex-group">
@@ -300,19 +532,29 @@
 
                     <div class="input-group">
                         <i class="fas fa-user input-icon"></i>
-                        <input type="text" class="form-control" placeholder="Full Name" required>
+                        <input type="text" class="form-control" placeholder="Full Name" required id="register-name">
                     </div>
 
                     <div class="input-group">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" class="form-control" placeholder="Email" required>
+                        <input type="email" class="form-control" placeholder="Email" required id="register-email">
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="tel" class="form-control" placeholder="Phone Number" id="register-phone">
                     </div>
 
                     <div class="input-group">
                         <i class="fas fa-lock input-icon"></i>
                         <input type="password" class="form-control" placeholder="Password" required
-                               id="signupPassword" oninput="checkPasswordStrength(this.value)">
-                        <i class="fas fa-eye password-toggle" onclick="togglePassword('signupPassword')"></i>
+                               id="register-password" oninput="checkPasswordStrength(this.value)">
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('register-password')"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" class="form-control" placeholder="Confirm Password" required id="register-confirm">
                     </div>
 
                     <div class="security-indicator">
@@ -330,6 +572,159 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- User Dashboard -->
+<div class="dashboard-container" id="user-dashboard">
+    <div class="dashboard">
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">My Profile</a></li>
+                <li><a href="#">Reservations</a></li>
+                <li><a href="#">Payment Methods</a></li>
+                <li><a href="#">Favorites</a></li>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <div class="avatar">JD</div>
+                    <div class="user-details">
+                        <h2>John Doe</h2>
+                        <p>Member since June 2023</p>
+                    </div>
+                </div>
+                <button class="btn-auth btn-secondary" onclick="showEditProfileForm()">Edit Profile</button>
+            </div>
+
+            <div class="auth-alert alert-success" id="profileAlert" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                Profile updated successfully!
+            </div>
+
+            <div class="profile-content">
+                <div>
+                    <div class="info-card">
+                        <h3>Personal Information</h3>
+                        <div class="info-row">
+                            <span class="info-label">Full Name:</span>
+                            <span id="profile-name">John Doe</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Email:</span>
+                            <span id="profile-email">john.doe@example.com</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Phone:</span>
+                            <span id="profile-phone">(123) 456-7890</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Account Security</h3>
+                        <div class="info-row">
+                            <span class="info-label">Password:</span>
+                            <span>••••••••</span>
+                        </div>
+                        <button class="edit-btn" onclick="showChangePasswordForm()">Change Password</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="info-card">
+                        <h3>Recent Reservations</h3>
+                        <div class="info-row">
+                            <span class="info-label">The Gourmet Spot</span>
+                            <span>May 15, 2023</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Ocean View Bistro</span>
+                            <span>April 28, 2023</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Pasta Palace</span>
+                            <span>March 10, 2023</span>
+                        </div>
+                        <button class="edit-btn">View All Reservations</button>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Account Actions</h3>
+                        <button class="btn-auth btn-secondary" style="margin-bottom: 10px;" onclick="showDeleteAccountForm()">Delete Account</button>
+                        <p style="font-size: 12px; color: #777;">This action cannot be undone. All your data will be permanently deleted.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Form -->
+<div id="edit-profile-form" class="form-container">
+    <h2 class="form-title">Edit Profile</h2>
+    <form id="editProfileForm">
+        <div class="input-group">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" class="form-control" id="edit-name" value="John Doe" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" class="form-control" id="edit-email" value="john.doe@example.com" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-phone input-icon"></i>
+            <input type="tel" class="form-control" id="edit-phone" value="1234567890">
+        </div>
+        <button type="submit" class="btn-auth btn-primary">Save Changes</button>
+        <button type="button" class="btn-auth btn-secondary" onclick="hideEditProfileForm()">Cancel</button>
+    </form>
+</div>
+
+<!-- Change Password Form -->
+<div id="change-password-form" class="form-container">
+    <h2 class="form-title">Change Password</h2>
+    <form id="changePasswordForm">
+        <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="form-control" id="current-password" placeholder="Current Password" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="form-control" id="new-password" placeholder="New Password" required>
+            <i class="fas fa-eye password-toggle" onclick="togglePassword('new-password')"></i>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="form-control" id="confirm-new-password" placeholder="Confirm New Password" required>
+            <i class="fas fa-eye password-toggle" onclick="togglePassword('confirm-new-password')"></i>
+        </div>
+        <div class="security-indicator">
+            <div class="security-bar" id="changePasswordBar"></div>
+        </div>
+        <div class="password-strength" id="changePasswordStrength"></div>
+        <button type="submit" class="btn-auth btn-primary">Update Password</button>
+        <button type="button" class="btn-auth btn-secondary" onclick="hideChangePasswordForm()">Cancel</button>
+    </form>
+</div>
+
+<!-- Delete Account Form -->
+<div id="delete-account-form" class="form-container">
+    <h2 class="form-title">Delete Account</h2>
+    <div class="auth-alert alert-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <strong>Warning:</strong> This action cannot be undone. All your data will be permanently deleted.
+    </div>
+    <form id="deleteAccountForm">
+        <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="form-control" id="delete-password" placeholder="Enter your password to confirm" required>
+        </div>
+        <button type="submit" class="btn-auth" style="background-color: var(--danger);">Permanently Delete Account</button>
+        <button type="button" class="btn-auth btn-secondary" onclick="hideDeleteAccountForm()">Cancel</button>
+    </form>
 </div>
 
 <script>
@@ -377,44 +772,186 @@
         if (password.match(/[^A-Za-z0-9]/)) score++;
 
         const { text, color, width } = strength[Math.min(score, 4)];
-        document.getElementById('securityBar').style = `
-                width: ${width};
-                background: ${color}
-            `;
-        document.getElementById('passwordStrength').innerHTML = `
-                Password Strength: <strong style="color: ${color}">${text}</strong>
-            `;
+        const securityBar = document.getElementById('securityBar') || document.getElementById('changePasswordBar');
+        const passwordStrength = document.getElementById('passwordStrength') || document.getElementById('changePasswordStrength');
+
+        securityBar.style = `
+            width: ${width};
+            background: ${color}
+        `;
+        passwordStrength.innerHTML = `
+            Password Strength: <strong style="color: ${color}">${text}</strong>
+        `;
     }
 
     // Form Submission Handling
-    document.querySelectorAll('.auth-form').forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const alertBox = form.querySelector('.auth-alert');
-            alertBox.style.display = 'block';
-            alertBox.classList.remove('alert-error', 'alert-success');
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const alertBox = document.getElementById('loginAlert');
+        alertBox.style.display = 'none';
 
-            // Simulate API call
-            setTimeout(() => {
-                if(Math.random() > 0.5) {
-                    alertBox.classList.add('alert-success');
-                    alertBox.innerHTML = `
-                            <i class="fas fa-check-circle"></i>
-                            ${form.id == 'loginForm' ? 'Login successful!' : 'Account created!'}
-                        `;
-                    form.reset();
-                } else {
-                    alertBox.classList.add('alert-error');
-                    alertBox.innerHTML = `
-                            <i class="fas fa-exclamation-circle"></i>
-                            ${form.id == 'loginForm'
-                                ? 'Invalid email or password'
-                                : 'Email already registered'}
-                        `;
-                }
-            }, 1000);
-        });
+        // Simulate login
+        setTimeout(() => {
+            showUserDashboard();
+        }, 1000);
     });
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const alertBox = document.getElementById('signupAlert');
+        alertBox.style.display = 'none';
+
+        // Get form values
+        const name = document.getElementById('register-name').value;
+        const email = document.getElementById('register-email').value;
+        const phone = document.getElementById('register-phone').value;
+
+        // Update profile info
+        document.getElementById('profile-name').textContent = name;
+        document.getElementById('profile-email').textContent = email;
+        document.getElementById('profile-phone').textContent = phone || 'Not provided';
+        document.querySelector('.avatar').textContent = name.split(' ').map(n => n[0]).join('');
+
+        // Simulate registration
+        setTimeout(() => {
+            showUserDashboard();
+        }, 1000);
+    });
+
+    document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('edit-name').value;
+        const email = document.getElementById('edit-email').value;
+        const phone = document.getElementById('edit-phone').value;
+
+        // Update profile info
+        document.getElementById('profile-name').textContent = name;
+        document.getElementById('profile-email').textContent = email;
+        document.getElementById('profile-phone').textContent = phone || 'Not provided';
+        document.querySelector('.avatar').textContent = name.split(' ').map(n => n[0]).join('');
+
+        // Show success message
+        const alertBox = document.getElementById('profileAlert');
+        alertBox.style.display = 'block';
+
+        // Hide form
+        hideEditProfileForm();
+
+        // Hide alert after 3 seconds
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 3000);
+    });
+
+    document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Show success message
+        const alertBox = document.getElementById('profileAlert');
+        alertBox.innerHTML = '<i class="fas fa-check-circle"></i> Password changed successfully!';
+        alertBox.style.display = 'block';
+
+        // Hide form
+        hideChangePasswordForm();
+
+        // Hide alert after 3 seconds
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 3000);
+    });
+
+    document.getElementById('deleteAccountForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Account deleted successfully');
+        showLoginForm();
+    });
+
+    // View Toggle Functions
+    function showLoginForm() {
+        document.getElementById('auth-container').style.display = 'grid';
+        document.getElementById('user-dashboard').style.display = 'none';
+        document.getElementById('edit-profile-form').style.display = 'none';
+        document.getElementById('change-password-form').style.display = 'none';
+        document.getElementById('delete-account-form').style.display = 'none';
+
+        // Activate login tab
+        document.querySelectorAll('.auth-link').forEach(l => l.classList.remove('active'));
+        document.querySelector('.auth-link[href="#login"]').classList.add('active');
+        document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+        document.getElementById('loginForm').classList.add('active');
+    }
+
+    function showRegisterForm() {
+        document.getElementById('auth-container').style.display = 'grid';
+        document.getElementById('user-dashboard').style.display = 'none';
+        document.getElementById('edit-profile-form').style.display = 'none';
+        document.getElementById('change-password-form').style.display = 'none';
+        document.getElementById('delete-account-form').style.display = 'none';
+
+        // Activate register tab
+        document.querySelectorAll('.auth-link').forEach(l => l.classList.remove('active'));
+        document.querySelector('.auth-link[href="#signup"]').classList.add('active');
+        document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+        document.getElementById('signupForm').classList.add('active');
+    }
+
+    function showUserDashboard() {
+        document.getElementById('auth-container').style.display = 'none';
+        document.getElementById('user-dashboard').style.display = 'block';
+        document.getElementById('edit-profile-form').style.display = 'none';
+        document.getElementById('change-password-form').style.display = 'none';
+        document.getElementById('delete-account-form').style.display = 'none';
+    }
+
+    function showEditProfileForm() {
+        document.getElementById('auth-container').style.display = 'none';
+        document.getElementById('user-dashboard').style.display = 'none';
+        document.getElementById('edit-profile-form').style.display = 'block';
+        document.getElementById('change-password-form').style.display = 'none';
+        document.getElementById('delete-account-form').style.display = 'none';
+    }
+
+    function hideEditProfileForm() {
+        showUserDashboard();
+    }
+
+    function showChangePasswordForm() {
+        document.getElementById('auth-container').style.display = 'none';
+        document.getElementById('user-dashboard').style.display = 'none';
+        document.getElementById('edit-profile-form').style.display = 'none';
+        document.getElementById('change-password-form').style.display = 'block';
+        document.getElementById('delete-account-form').style.display = 'none';
+    }
+
+    function hideChangePasswordForm() {
+        showUserDashboard();
+    }
+
+    function showDeleteAccountForm() {
+        document.getElementById('auth-container').style.display = 'none';
+        document.getElementById('user-dashboard').style.display = 'none';
+        document.getElementById('edit-profile-form').style.display = 'none';
+        document.getElementById('change-password-form').style.display = 'none';
+        document.getElementById('delete-account-form').style.display = 'block';
+    }
+
+    function hideDeleteAccountForm() {
+        showUserDashboard();
+    }
+
+    function logout() {
+        showLoginForm();
+    }
+
+    // Initialize password strength checker for change password form
+    document.getElementById('new-password').addEventListener('input', function() {
+        checkPasswordStrength(this.value);
+    });
+
+    // Initialize by showing login form
+    showLoginForm();
 </script>
 </body>
 </html>
