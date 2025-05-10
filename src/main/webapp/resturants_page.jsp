@@ -421,6 +421,7 @@
                     <p>Japanese Cuisine  $$ | 3.5km away</p>
                     <div class="card-footer">
                         <!-- Updated Reserve Button with Redirect to Payment Page -->
+                        <!-- Updated Reserve Button with Redirect to Payment Page -->
                         <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                             <i class="fas fa-calendar-alt"></i> Reserve
                         </button>
