@@ -301,16 +301,17 @@
     <!-- Restaurant Grid -->
     <section class="restaurant-grid">
         <div class="restaurant-card">
-        <div class="card-badge">25% Off</div>
-        <div class="card-image" style="background-image: url(resources/images/rest5.jpg)"></div>
-           <div class="card-content">
+            <div class="card-badge">25% Off</div>
+            <div class="card-image" style="background-image: url(resources/images/rest5.jpg)"></div>
+            <div class="card-content">
             <h3>Kai Resto</h3>
             <div class="rating">
                 <i class="fas fa-star"></i> 4.5 (220 reviews)
             </div>
             <p>French Cuisine  $$$ | 2km away</p>
             <div class="card-footer">
-                <button class="btn-primary" onclick="showReservationModal()">
+                <!-- Updated Reserve Button with Redirect to Payment Page -->
+                <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                     <i class="fas fa-calendar-alt"></i> Reserve
                 </button>
                 <div class="availability">
@@ -330,7 +331,8 @@
                 </div>
                 <p>Korean Cuisine $$$ | 1.5 km away</p>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="showReservationModal()">
+                    <!-- Updated Reserve Button with Redirect to Payment Page -->
+                    <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                         <i class="fas fa-calendar-alt"></i> Reserve
                     </button>
                     <div class="availability">
@@ -350,7 +352,8 @@
                 </div>
                 <p>Korean Cuisine $$$ | 2 km away</p>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="showReservationModal()">
+                    <!-- Updated Reserve Button with Redirect to Payment Page -->
+                    <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                         <i class="fas fa-calendar-alt"></i> Reserve
                     </button>
                     <div class="availability">
@@ -370,7 +373,8 @@
                 </div>
                 <p>Korean Cuisine $$$ | 2 km away</p>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="showReservationModal()">
+                    <!-- Updated Reserve Button with Redirect to Payment Page -->
+                    <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                         <i class="fas fa-calendar-alt"></i> Reserve
                     </button>
                     <div class="availability">
@@ -394,7 +398,8 @@
                     </div>
                     <p>Indian Cuisine  $$ | 3 km away</p>
                     <div class="card-footer">
-                        <button class="btn-primary" onclick="showReservationModal()">
+                        <!-- Updated Reserve Button with Redirect to Payment Page -->
+                        <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                             <i class="fas fa-calendar-alt"></i> Reserve
                         </button>
                         <div class="availability">
@@ -415,7 +420,8 @@
                     </div>
                     <p>Japanese Cuisine  $$ | 3.5km away</p>
                     <div class="card-footer">
-                        <button class="btn-primary" onclick="showReservationModal()">
+                        <!-- Updated Reserve Button with Redirect to Payment Page -->
+                        <button class="btn-primary" onclick="window.location.href='paymentForm.jsp?restaurant=LaMaisonGourmet&price=3&distance=2km'">
                             <i class="fas fa-calendar-alt"></i> Reserve
                         </button>
                         <div class="availability">
