@@ -109,6 +109,8 @@
 </head>
 <body>
 
+
+
 <div class="container">
     <h2>Make a Payment</h2>
 
@@ -126,27 +128,47 @@
         <input type="number" name="amount" step="0.01" required placeholder="Enter Amount">
 
         <label>Payment Method:</label>
-        <select name="paymentMethod">
+        <select name="paymentMethod" id="paymentMethod" required>
+            <option value="Select" disabled selected>Select Payment Method</option>
             <option value="Credit Card">Credit Card</option>
             <option value="PayPal">PayPal</option>
-            <option value="Google Pay">Google Pay</option>
         </select>
+
+        <!-- Fields for Credit Card -->
+        <div id="creditCardFields" style="display: none;">
+            <label>Card Number:</label>
+            <input type="text" name="cardNumber" placeholder="Enter Card Number">
+
+            <label>Expiry Date:</label>
+            <input type="text" name="expiryDate" placeholder="MM/YY">
+
+            <label>CVV:</label>
+            <input type="text" name="cvv" placeholder="Enter CVV">
+        </div>
+
+        <!-- Fields for PayPal -->
+        <div id="paypalFields" style="display: none;">
+            <label>PayPal Account:</label>
+            <input type="email" name="paypalAccount" placeholder="Enter PayPal Account Email">
+        </div>
 
         <button type="submit">Pay Now</button>
     </form>
-
 </div>
 
 <script>
-    function processPayment() {
-        setTimeout(function () {
-            window.location.href = "paymentSuccess.jsp";
-        }, 1000);
-    }
+    document.querySelector('#paymentMethod').addEventListener('change', function() {
+        const method = this.value;
+        const ccFields = document.getElementById('creditCardFields');
+        const ppFields = document.getElementById('paypalFields');
+
+        ccFields.style.display = method === 'Credit Card' ? 'block' : 'none';
+        ppFields.style.display = method === 'PayPal' ? 'block' : 'none';
+    });
 </script>
 
-</body>
-</html>
+
+
 
 
 

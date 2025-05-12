@@ -5,8 +5,20 @@
   Time: 1:56 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- Payment success page -->
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%
+    String paymentMethod = request.getParameter("paymentMethod");
+    String paymentID = request.getParameter("paymentID");
+    String userID = request.getParameter("userID");
+    String reservationID = request.getParameter("reservationID");
+    String amount = request.getParameter("amount");
+    String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+    String cardNumber = request.getParameter("cardNumber");
+    String paypalAccount = request.getParameter("paypalAccount");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,37 +28,45 @@
         body {
             font-family: Arial, sans-serif;
             padding: 50px;
-            background: url('https://images.unsplash.com/photo-1667388969250-1c7220bf3f37?q=80&w=2110&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+            background: url('https://images.unsplash.com/photo-1667388969250-1c7220bf3f37?q=80&w=2110&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             text-align: center;
         }
         .success-box {
-            background: rgba(255, 255, 255, 0.8); /* Light transparent background */
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid #c3e6cb;
             padding: 30px;
             display: inline-block;
             border-radius: 10px;
-            text-align: center;
             width: 100%;
             max-width: 500px;
             margin: auto;
-        }
-        a {
-            color: #dc3545;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
         }
         table {
             width: 100%;
             margin-top: 20px;
             border-spacing: 0;
-            text-align: center;
+            text-align: left;
         }
         td {
             padding: 8px 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        a {
+            color: #dc3545;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -57,21 +77,23 @@
 
     <h3>Payment Details</h3>
     <table>
-        <tr><td>Payment ID:</td><td><%= request.getParameter("paymentID") %></td></tr>
-        <tr><td>User ID:</td><td><%= request.getParameter("userID") %></td></tr>
-        <tr><td>Reservation ID:</td><td><%= request.getParameter("reservationID") %></td></tr>
-        <tr><td>Method:</td><td><%= request.getParameter("paymentMethod") %></td></tr>
-        <tr><td>Date:</td><td><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %></td></tr>
-        <tr><td>Total:</td><td>$<%= request.getParameter("amount") %></td></tr>
+        <tr><td><strong>Payment ID:</strong></td><td><%= paymentID %></td></tr>
+        <tr><td><strong>User ID:</strong></td><td><%= userID %></td></tr>
+        <tr><td><strong>Reservation ID:</strong></td><td><%= reservationID %></td></tr>
+        <tr><td><strong>Payment Method:</strong></td><td><%= paymentMethod %></td></tr>
+        <% if ("Credit Card".equals(paymentMethod)) { %>
+        <tr><td><strong>Card Number:</strong></td><td><%= cardNumber %></td></tr>
+        <% } else if ("PayPal".equals(paymentMethod)) { %>
+        <tr><td><strong>PayPal Email:</strong></td><td><%= paypalAccount %></td></tr>
+        <% } %>
+        <tr><td><strong>Date:</strong></td><td><%= date %></td></tr>
+        <tr><td><strong>Total:</strong></td><td>$<%= amount %></td></tr>
     </table>
 
-    <br>
     <button onclick="window.print()">Print Receipt</button>
 
     <br><br>
-
-    <!-- Link to Refund Request Form -->
-    <p>If you would like to request a refund, click the link below:</p>
+    <p>If you would like to request a refund:</p>
     <a href="refundForm.jsp">Request a Refund</a>
 </div>
 </body>
